@@ -8,10 +8,10 @@ export const Container = styled.div`
 `
 export const PageTitle = styled.div`
     color: #767676;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     margin-bottom: 1.5rem;
     margin-top: 1rem;
-    font-weight: 500;
+    font-weight: 600;
 `
 export const PeopleWraper = styled.div`
     width: 100%;

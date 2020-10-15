@@ -11,7 +11,7 @@ export const Container = styled.div`
 
 `
 export const PageTitle = styled.h1`
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #767676;
 
     margin-bottom: 0.5rem;
@@ -32,7 +32,7 @@ export const CultsWraper = styled.div`
 export const CultDate = styled.span`
     color: #767676;
     font-weight: 600;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 `
 export const CultLotation = styled.div`
     color: #767676;
