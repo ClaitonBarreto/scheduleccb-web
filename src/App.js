@@ -1,25 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect} from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+
+import Home from './pages/Home'
+import Cult from './pages/Cult'
+import Splash from './pages/Splash'
+
+import api from '../src/@api/connection'
 
 function App() {
+
+  const [isLoad, setIsLoad] = useState([])
+
+  useEffect(() => {
+    async function connect() {
+
+      const conn = await api.get('/')
+
+      if(!conn.data.error) {
+        setIsLoad(false)
+      }
+    }
+
+    connect()
+  })
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {isLoad ? 
+        (<Splash />) 
+        : (
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home}/>
+            <Route path="/cult/:id/:cultDate" component={Cult}/>
+            <Route>
+              <h1>Erro. Rota não existente</h1>
+            </Route>
+          </Switch>
+        </Router>
+      )}
+    </>
   );
 }
 
