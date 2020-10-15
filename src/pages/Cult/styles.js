@@ -10,16 +10,26 @@ export const PageTitle = styled.div`
     color: #767676;
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
-    margin-top: 1rem;
     font-weight: 600;
+    flex: 1;
+    position: fixed;
+    top: 0;
+    background-color: #fff;
+    width: 100%;
+    height: 3.5rem;
+    box-shadow: 1px 2px 3px #767676;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 export const PeopleWraper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 7rem 0;
 
-    margin-bottom: 7rem;
 `
 export const PeopleContainer = styled.div`
     width: 90%;

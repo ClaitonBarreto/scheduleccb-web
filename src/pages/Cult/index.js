@@ -64,7 +64,7 @@ const Cult = () => {
     }
 
     return (
-        <Container>
+        <>
             <AddPeopleModal 
                 isOpen={openAddModal} 
                 handleCloseModal={handleCloseAddModal}
@@ -76,27 +76,29 @@ const Cult = () => {
                 handleCloseModal={handleCloseConfirmPresenceModal}
                 peopleId={selectPeopleId}
             />
-            <PageTitle>
-                {format(addDays(new Date(cultDate), 1), 'dd/MM/yyyy')}
-            </PageTitle>
-            <PeopleWraper>
-                {peoples.map((people, index) => (
-                    <Card key={index} small>
-                        <PeopleContainer
-                            onClick={() => {
-                                handleClickPeopleCard(people._id, people.checked)
-                            }}  
-                        >
-                            <Name checked={people.checked}>{people.name}</Name>
-                            <Checkbox checked={people.checked}/>
-                        </PeopleContainer>
-                    </Card>    
-                ))}
-            </PeopleWraper>
-            <AddButton onClick={() => setOpenAddModal(true)}>
-                Adicionar Participante
-            </AddButton>
-        </Container>
+            <Container>
+                <PageTitle>
+                    {format(addDays(new Date(cultDate), 1), 'dd/MM/yyyy')}
+                </PageTitle>
+                <PeopleWraper>
+                    {peoples.map((people, index) => (
+                        <Card key={index} small>
+                            <PeopleContainer
+                                onClick={() => {
+                                    handleClickPeopleCard(people._id, people.checked)
+                                }}  
+                            >
+                                <Name checked={people.checked}>{people.name}</Name>
+                                <Checkbox checked={people.checked}/>
+                            </PeopleContainer>
+                        </Card>    
+                    ))}
+                </PeopleWraper>
+                <AddButton onClick={() => setOpenAddModal(true)}>
+                    Adicionar Participante
+                </AddButton>
+            </Container>
+        </>
     )
 }
 
