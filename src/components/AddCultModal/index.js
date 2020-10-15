@@ -29,6 +29,7 @@ const AddCultModal = ({isOpen, handleCloseModal}) => {
             alert(res.data.message)
         } else {
             alert('culto cadastrado')
+            handleCloseModal()
         }
     }
 

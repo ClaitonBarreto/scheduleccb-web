@@ -16,6 +16,8 @@ export const InputText = styled.input`
     border-bottom: 1px solid #767676; 
 
     margin: 1.5rem 0;
+
+    font-size: 1.2rem;
 `
 export const ButtonsWrapper = styled.div`
     display: flex;
