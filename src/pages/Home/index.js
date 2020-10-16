@@ -5,6 +5,7 @@ import { ptBR } from 'date-fns/locale'
 
 import Card from '../../components/Card'
 import AddCultModal from '../../components/AddCultModal'
+import CultLotation from '../../components/CultLotation'
 import api from '../../@api/connection'
 
 import {
@@ -14,7 +15,6 @@ import {
     CultsWraper,
     Cult,
     CultDate,
-    CultLotation,
     AddButton,
     CultContainer
 } from './styles'
@@ -28,7 +28,6 @@ const Home = () => {
 
         async function getCults() {
             const cultsResponse = await api.get('/cult')
-            console.log(cultsResponse.data)
             setCults(cultsResponse.data)
         }
 
@@ -60,11 +59,11 @@ const Home = () => {
                     >
                         <CultContainer to={`/cult/${cult._id}/${cult.date}`}>
                             <CultDate>{format(addDays(new Date(cult.date), 1), 'cccc, dd/MM', {locale: ptBR})}</CultDate>
-                            <CultLotation>50/62</CultLotation>
+                            <CultLotation cultId={cult._id} />
                         </CultContainer>
                     </Card>
                 ))}
-
+ 
 
             </CultsWraper>
             <AddButton

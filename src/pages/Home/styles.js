@@ -34,10 +34,6 @@ export const CultDate = styled.span`
     font-weight: 600;
     font-size: 1.2rem;
 `
-export const CultLotation = styled.div`
-    color: #767676;
-    font-weight: 600;
-`
 export const AddButton = styled.div`
     position: fixed;
     bottom: 1rem;
