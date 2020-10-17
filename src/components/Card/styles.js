@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import { Card } from '@material-ui/core'
 
-export const Container = styled.div`
+export const Container = styled(Card)`
     width: 90%;
     height: ${({small}) => small ? '3.5rem' : '4.5rem'};
 

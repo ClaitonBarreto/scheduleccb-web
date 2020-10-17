@@ -6,6 +6,7 @@ import { ptBR } from 'date-fns/locale'
 import Card from '../../components/Card'
 import AddCultModal from '../../components/AddCultModal'
 import CultLotation from '../../components/CultLotation'
+import NavBar from '../../components/NavBar'
 import api from '../../@api/connection'
 
 import {
@@ -44,13 +45,14 @@ const Home = () => {
 
     return (
         <Container>
+            <NavBar title="CCB Jardim Anhangá"/>
             <AddCultModal isOpen={openAddCultModal} handleCloseModal={handleCloseModal}/>
-            <PageTitle>
+            {/* <PageTitle>
                 CCB Jardim Anhangá
             </PageTitle>
             <PageSubTitle>
                 Cultos agendados
-            </PageSubTitle>
+            </PageSubTitle> */}
             <CultsWraper>
 
                 {cults && cults.map((cult, index) => (

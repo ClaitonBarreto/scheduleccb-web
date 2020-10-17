@@ -9,6 +9,7 @@ export const Container = styled.div`
     align-items: center;
     flex-direction: column;
 
+    padding-top: 5rem;
 `
 export const PageTitle = styled.h1`
     font-size: 1.5rem;

@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { format, addDays } from 'date-fns'
+import {ptBR} from 'date-fns/locale'
 
 import Checkbox from '../../components/Checkbox'
 import Card from '../../components/Card'
 import api from '../../@api/connection'
 import AddPeopleModal from '../../components/AddPeopleModal'
 import ConfirmPresenceModal from '../../components/ConfirmPresenceModal'
+import NavBar from '../../components/NavBar'
+import Menu from '../../components/Menu'
 
 import {
     Container,
@@ -47,7 +50,7 @@ const Cult = () => {
 
     function handleClickPeopleCard(id, checked) {
         var today = format(new Date(), 'dd/MM/yyyy')
-        var cultDay = format(new Date(cultDate), 'dd/MM/yyyy')
+        var cultDay = format(addDays(new Date(cultDate), 1), 'dd/MM/yyyy')
         
         if(checked) {
             alert('Uma vez confirmada a presença, a ação não pode ser desfeita ')
@@ -77,9 +80,8 @@ const Cult = () => {
                 peopleId={selectPeopleId}
             />
             <Container>
-                <PageTitle>
-                    {format(addDays(new Date(cultDate), 1), 'dd/MM/yyyy')}
-                </PageTitle>
+                <NavBar title={format(addDays(new Date(cultDate), 1), 'cccc, dd/MM/yyyy', {locale: ptBR})}/>
+            
                 <PeopleWraper>
                     {peoples.map((people, index) => (
                         <Card key={index} small>
@@ -89,7 +91,7 @@ const Cult = () => {
                                 }}  
                             >
                                 <Name checked={people.checked}>{people.name}</Name>
-                                <Checkbox checked={people.checked}/>
+                                <Menu />
                             </PeopleContainer>
                         </Card>    
                     ))}
