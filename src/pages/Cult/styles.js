@@ -60,3 +60,14 @@ export const AddButton = styled.div`
 
     color: #fff;
 `
+
+export const ItemWraper = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 95%;
+
+    margin-bottom: 1.5rem;
+`

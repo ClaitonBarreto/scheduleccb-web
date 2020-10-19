@@ -2,10 +2,10 @@ import React from 'react'
 
 import { Container } from './styles'
 
-const Card = ({children, small}) => {
+const Card = ({children, smallCard}) => {
 
     return (
-        <Container small={small}>
+        <Container small={smallCard}>
             {children}
         </Container>
     )

@@ -12,7 +12,7 @@ export const Container = styled(Card)`
     align-items: center;
     justify-content: center;
 
-    margin-bottom: 1.5rem;
+    /* margin-bottom: 1.5rem; */
 
     text-decoration: none;
 

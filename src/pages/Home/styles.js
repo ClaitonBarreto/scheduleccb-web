@@ -58,3 +58,10 @@ export const CultContainer = styled(Link)`
     justify-content: space-between;
     text-decoration: none;
 `
+
+export const ItensWraper = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+`

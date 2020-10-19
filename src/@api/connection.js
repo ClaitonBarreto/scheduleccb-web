@@ -40,6 +40,18 @@ const apiConnection =  {
         .catch(err => error = err)
 
         return result;
+    },
+
+    delete: async (url, options) => {
+        let result = {}
+        let error = {}
+        await api.delete(url, options)
+        .then(response => {
+            result = response
+        })
+        .catch(err => error = err)
+
+        return result;
     }
 }
 

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
 import { format, addDays } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 
@@ -11,13 +10,11 @@ import api from '../../@api/connection'
 
 import {
     Container,
-    PageTitle,
-    PageSubTitle,
     CultsWraper,
-    Cult,
     CultDate,
     AddButton,
-    CultContainer
+    CultContainer,
+    ItensWraper
 } from './styles'
 
 const Home = () => {
@@ -47,23 +44,17 @@ const Home = () => {
         <Container>
             <NavBar title="CCB Jardim Anhangá"/>
             <AddCultModal isOpen={openAddCultModal} handleCloseModal={handleCloseModal}/>
-            {/* <PageTitle>
-                CCB Jardim Anhangá
-            </PageTitle>
-            <PageSubTitle>
-                Cultos agendados
-            </PageSubTitle> */}
             <CultsWraper>
 
                 {cults && cults.map((cult, index) => (
-                    <Card 
-                        key={index}
-                    >
-                        <CultContainer to={`/cult/${cult._id}/${cult.date}`}>
-                            <CultDate>{format(addDays(new Date(cult.date), 1), 'cccc, dd/MM', {locale: ptBR})}</CultDate>
-                            <CultLotation cultId={cult._id} />
-                        </CultContainer>
-                    </Card>
+                    <ItensWraper key={index}>
+                        <Card small={false}>
+                            <CultContainer to={`/cult/${cult._id}/${cult.date}`}>
+                                <CultDate>{format(addDays(new Date(cult.date), 1), 'cccc, dd/MM', {locale: ptBR})}</CultDate>
+                                <CultLotation cultId={cult._id} />
+                            </CultContainer>
+                        </Card>
+                    </ItensWraper>
                 ))}
  
 

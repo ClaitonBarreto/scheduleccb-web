@@ -3,22 +3,21 @@ import { useParams } from 'react-router-dom'
 import { format, addDays } from 'date-fns'
 import {ptBR} from 'date-fns/locale'
 
-import Checkbox from '../../components/Checkbox'
 import Card from '../../components/Card'
 import api from '../../@api/connection'
 import AddPeopleModal from '../../components/AddPeopleModal'
 import ConfirmPresenceModal from '../../components/ConfirmPresenceModal'
+import DeleteModal from '../../components/DeleteModal'
 import NavBar from '../../components/NavBar'
 import Menu from '../../components/Menu'
 
 import {
     Container,
-    PageTitle,
     PeopleWraper,
-    PeopleCard,
     Name,
     AddButton,
-    PeopleContainer
+    PeopleContainer,
+    ItemWraper
 } from './styles'
 
 const Cult = () => {
@@ -30,15 +29,16 @@ const Cult = () => {
 
     const [openAddModal, setOpenAddModal] = useState(false)
     const [openConfirmPresenceModal, setOpenConfirmPresenceModal] = useState(false)
+    const [openDeleteModal, setOpenDeleteModal] = useState(false)
 
     useEffect(() => {
-        async function fecthData() {
+        async function fecthData(id) {
             const peoples = await api.get(`/people/${id}`)
             setPeople(peoples.data)
         }
 
-        fecthData()
-    }, [openAddModal, openConfirmPresenceModal])
+        fecthData(id)
+    }, [openAddModal, openConfirmPresenceModal, openDeleteModal])
 
     function handleCloseAddModal() {
         setOpenAddModal(false)
@@ -48,7 +48,11 @@ const Cult = () => {
         setOpenConfirmPresenceModal(false)
     }
 
-    function handleClickPeopleCard(id, checked) {
+    function handleCloseDeleteModal() {
+        setOpenDeleteModal(false)
+    }
+
+    function confirmPresense(id, checked) {
         var today = format(new Date(), 'dd/MM/yyyy')
         var cultDay = format(addDays(new Date(cultDate), 1), 'dd/MM/yyyy')
         
@@ -66,6 +70,11 @@ const Cult = () => {
         setOpenConfirmPresenceModal(true)
     }
 
+    async function deletePeople(id) {
+        setSelectPeopleId(id)
+        setOpenDeleteModal(true)
+    }
+
     return (
         <>
             <AddPeopleModal 
@@ -79,21 +88,30 @@ const Cult = () => {
                 handleCloseModal={handleCloseConfirmPresenceModal}
                 peopleId={selectPeopleId}
             />
+
+            <DeleteModal 
+                isOpen={openDeleteModal}
+                handleCloseModal={handleCloseDeleteModal}
+                peopleId={selectPeopleId}
+            />
             <Container>
                 <NavBar title={format(addDays(new Date(cultDate), 1), 'cccc, dd/MM/yyyy', {locale: ptBR})}/>
             
                 <PeopleWraper>
                     {peoples.map((people, index) => (
-                        <Card key={index} small>
-                            <PeopleContainer
-                                onClick={() => {
-                                    handleClickPeopleCard(people._id, people.checked)
-                                }}  
-                            >
+                        <ItemWraper key={index}>
+                        <Card smallCard='true'>
+                            <PeopleContainer>
                                 <Name checked={people.checked}>{people.name}</Name>
-                                <Menu />
                             </PeopleContainer>
                         </Card>    
+                        <Menu 
+                            actions={{
+                                confirm: () => confirmPresense(people._id, people.checked),
+                                delete: () => deletePeople(people._id)
+                            }}
+                        />
+                        </ItemWraper>
                     ))}
                 </PeopleWraper>
                 <AddButton onClick={() => setOpenAddModal(true)}>
