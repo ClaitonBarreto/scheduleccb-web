@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {Modal} from '@material-ui/core'
 
 export const Container = styled.div`
     display: flex;
@@ -14,7 +15,7 @@ export const Label = styled.span`
 
 export const ButtonsWrapper = styled.div`
     margin-top: 1.5rem;
-    width: 70%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
 

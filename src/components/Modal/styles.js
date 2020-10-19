@@ -1,26 +1,29 @@
 import styled from 'styled-components'
+import {Modal} from '@material-ui/core'
 
 export const Container = styled.div`
     position: fixed;
-    width: 100vw;
-    height: 100vh;
 
-    background-color: rgba(0,0,0,.5);
+    background-color: #fff;
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+
+    padding: 4rem;
 
     z-index: 2;
 `
 
-export const ModalContainer = styled.div`
-    width: 70%;
+export const ModalContainer = styled(Modal)`
+    width: 100%;
     height: auto;
 
-    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    padding: 4rem 0;
+    /* padding: 4rem 0; */
 
-    background-color: #fff;
+    background-color: rgba(0,0,0,.5);
 `

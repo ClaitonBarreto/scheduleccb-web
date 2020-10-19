@@ -5,7 +5,6 @@ import api from '../../@api/connection'
 
 import {
     Container,
-    Label,
     InputText,
     ButtonsWrapper,
     ConfirmButton,
@@ -23,33 +22,37 @@ const AddPeopleModal = ({isOpen, handleCloseModal, cultId}) => {
             alert(res.data.message)
         }
 
+        setName('')
         handleCloseModal()
     }
 
-    if(isOpen) {
-        return (
-            <Modal>
-                <Container>
-                    <Label>Nome do(a) participante</Label>
-                    <InputText value={name} onChange={e => setName(e.target.value)}/>
-                    <ButtonsWrapper>
-                        <ConfirmButton
-                            onClick={() => handleAddPeople()}
-                        >
-                            Adicionar
-                        </ConfirmButton>
-                        <CancelButton
-                            onClick={() => handleCloseModal()}
-                        >
-                            Cancelar
-                        </CancelButton>
-                    </ButtonsWrapper>
-                </Container>
-            </Modal>
-        )
-    }
-
-    return null
+    return (
+        <Modal
+            isOpen={isOpen}
+            handleClose={handleCloseModal}
+        >
+            <Container>
+                <InputText 
+                    value={name} 
+                    onChange={e => setName(e.target.value)}
+                    label="Nome do(a) participante"
+                />
+                <ButtonsWrapper>
+                    <ConfirmButton
+                        onClick={() => handleAddPeople()}
+                    >
+                        Adicionar
+                    </ConfirmButton>
+                    <CancelButton
+                        onClick={() => handleCloseModal()}
+                    >
+                        Cancelar
+                    </CancelButton>
+                </ButtonsWrapper>
+            </Container>
+        </Modal>
+    )
+    
 }
 
 export default AddPeopleModal

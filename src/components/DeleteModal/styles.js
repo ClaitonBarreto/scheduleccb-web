@@ -15,7 +15,7 @@ export const Label = styled.span`
 `
 export const ButtonsWrapper = styled.div`
     display: flex;
-    width: 70%;
+    width: 100%;
 
     justify-content: space-between;
 `

@@ -23,29 +23,28 @@ const ConfirmPresenceModal = ({isOpen, handleCloseModal, peopleId}) => {
         }
     }
 
-    if(isOpen) {
-        return (
-            <Modal>
-                <Container>
-                    <Label>Confirmar presença do participante?</Label>
-                    <ButtonsWrapper>
-                        <ConfirmButton
-                            onClick={() => handleConfirmPresence()}
-                        >
-                            Confirmar
-                        </ConfirmButton>
-                        <CancelButton
-                            onClick={() => handleCloseModal()}
-                        >
-                            Cancelar
-                        </CancelButton>
-                    </ButtonsWrapper>
-                </Container>
-            </Modal>
-        )
-    }
-
-    return null
+    return (
+        <Modal
+            isOpen={isOpen}
+            handleClose={handleCloseModal}
+        >
+            <Container>
+                <Label>Confirmar presença do participante?</Label>
+                <ButtonsWrapper>
+                    <ConfirmButton
+                        onClick={() => handleConfirmPresence()}
+                    >
+                        Confirmar
+                    </ConfirmButton>
+                    <CancelButton
+                        onClick={() => handleCloseModal()}
+                    >
+                        Cancelar
+                    </CancelButton>
+                </ButtonsWrapper>
+            </Container>
+        </Modal>
+    )
 }
 
 export default ConfirmPresenceModal

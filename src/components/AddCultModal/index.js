@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import Modal from '../Modal'
 import DatePicker from 'react-datepicker'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import "react-datepicker/dist/react-datepicker.css";
 
 import api from '../../@api/connection'
+import Modal from '../../components/Modal'
 
 
 import {
@@ -13,7 +13,7 @@ import {
     Label,
     ButtonsWrapper,
     ConfirmButton,
-    CancelButton,
+    CancelButton
 } from './styles'
 
 const AddCultModal = ({isOpen, handleCloseModal}) => {
@@ -33,9 +33,14 @@ const AddCultModal = ({isOpen, handleCloseModal}) => {
         }
     }
 
-    if(isOpen) {
+    // if(isOpen) {
         return (
-            <Modal>
+            <Modal
+                isOpen={isOpen}
+                handleClose={handleCloseModal}
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+            >
                 <Container>
                     <Label>Selecione a data</Label>
                     <DatePicker 
@@ -59,9 +64,9 @@ const AddCultModal = ({isOpen, handleCloseModal}) => {
                 </Container>
             </Modal>
         )
-    }
+    // }
 
-    return null
+    // return null
 }
 
 export default AddCultModal

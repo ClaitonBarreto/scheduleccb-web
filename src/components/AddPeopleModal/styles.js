@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { TextField } from '@material-ui/core'
 
 export const Container = styled.div`
     display: flex;
@@ -9,7 +10,7 @@ export const Label = styled.span`
     color: #767676;
     font-size: 1.3rem;
 `
-export const InputText = styled.input`
+export const InputText = styled(TextField)`
     border-top: 0; 
     border-left: 0; 
     border-right: 0; 
@@ -21,7 +22,9 @@ export const InputText = styled.input`
 `
 export const ButtonsWrapper = styled.div`
     display: flex;
-    width: 70%;
+    width: 100%;
+
+    margin-top: 1.5rem;
 
     justify-content: space-between;
 `

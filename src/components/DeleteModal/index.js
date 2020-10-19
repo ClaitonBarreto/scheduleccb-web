@@ -11,8 +11,10 @@ import {
     CancelButton,
 } from './styles'
 
-const ConfirmPresenceModal = ({isOpen, handleCloseModal, peopleId}) => {
+const DeleteModal = ({isOpen, handleCloseModal, peopleId}) => {
     
+    React.useEffect(() => console.log(isOpen))
+
     async function handleDeletePeople() {
         const res = await api.delete(`/people/${peopleId}`)
 
@@ -23,29 +25,28 @@ const ConfirmPresenceModal = ({isOpen, handleCloseModal, peopleId}) => {
         }
     }
 
-    if(isOpen) {
-        return (
-            <Modal>
-                <Container>
-                    <Label>Deletar participante?</Label>
-                    <ButtonsWrapper>
-                        <ConfirmButton
-                            onClick={() => handleDeletePeople()}
-                        >
-                            Deletar
-                        </ConfirmButton>
-                        <CancelButton
-                            onClick={() => handleCloseModal()}
-                        >
-                            Cancelar
-                        </CancelButton>
-                    </ButtonsWrapper>
-                </Container>
-            </Modal>
-        )
-    }
-
-    return null
+    return (
+        <Modal
+            isOpen={isOpen}
+            handleClose={handleCloseModal}
+        >
+            <Container>
+                <Label>Deletar participante?</Label>
+                <ButtonsWrapper>
+                    <ConfirmButton
+                        onClick={() => handleDeletePeople()}
+                    >
+                        Deletar
+                    </ConfirmButton>
+                    <CancelButton
+                        onClick={() => handleCloseModal()}
+                    >
+                        Cancelar
+                    </CancelButton>
+                </ButtonsWrapper>
+            </Container>
+        </Modal>
+    )
 }
 
-export default ConfirmPresenceModal
+export default DeleteModal
